@@ -11,16 +11,15 @@ function Hero() {
     if (ReactGA.isInitialized) {
       ReactGA.event({
         category: "Resume",
-        action: "View",
-        label: "Resume PDF",
+        action: "Click",
+        label: "Resume Button",
       });
     }
-    
-    window.open(
-      "https://drive.google.com/file/d/1b7_xr5SbCWuRyOd_We0x1UAxb0btyLfl/view?usp=sharing",
-      "_blank",
-      "noopener,noreferrer"
-    );
+
+    document.getElementById('projects')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   };
 
   const handleContactScroll = (e) => {
@@ -91,7 +90,7 @@ function Hero() {
             theme === "dark" ? "text-[#aed9e0]/70" : "text-[#5e6472]/60"
           }`}
         >
-          Hello! I'm
+          Bonjour, je suis
         </motion.div>
 
         {/* Name - Optimized with reduced animations */}
@@ -144,7 +143,7 @@ function Hero() {
             theme === "dark" ? "text-[#aed9e0]/90" : "text-[#5e6472]/80"
           }`}
         >
-          Full-Stack Developer & Creative Thinker
+          Developpeur full-stack et esprit creatif
         </motion.p>
 
         {/* Decorative line */}
@@ -183,7 +182,7 @@ function Hero() {
                 : "hover:shadow-[#aed9e0]/40"
               }
             `}
-            aria-label="View Resume"
+            aria-label="Voir mon CV"
           >
             {/* Shine effect */}
             <motion.div
@@ -205,7 +204,7 @@ function Hero() {
             
             <span className="relative z-10 flex items-center gap-2.5">
               <FileText size={20} className="flex-shrink-0" />
-              View Resume
+              Voir mon CV
             </span>
           </motion.button>
 
@@ -224,11 +223,11 @@ function Hero() {
                 : "border-[#5e6472]/30 text-[#5e6472] hover:bg-[#5e6472]/5 hover:border-[#5e6472]"
               }
             `}
-            aria-label="Get In Touch"
+            aria-label="Me contacter"
           >
             <span className="flex items-center gap-2.5">
               <Mail size={20} className="flex-shrink-0" />
-              Get In Touch
+              Me contacter
             </span>
           </motion.a>
         </motion.div>

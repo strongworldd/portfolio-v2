@@ -7,16 +7,16 @@ function Experience() {
   const { theme } = useContext(ThemeContext);
 
   const experience = {
-    title: 'SWE Intern',
+    title: 'Stagiaire ingenieur logiciel',
     company: 'Labdox',
-    period: 'Nov 2025 – Present',
-    location: 'Pune, India',
-    type: 'Remote',
+    period: "Nov. 2025 - Aujourd'hui",
+    location: 'Pune, Inde',
+    type: 'A distance',
     description: [
-      'Developed and maintained production frontend components using HTML, CSS, and JavaScript.',
-      'Built responsive, mobile-first interfaces and implemented UI enhancements focused on usability and performance.',
-      'Translated product and design requirements into functional, user-facing features.',
-      'Collaborated remotely in a fast-paced startup environment to deliver features within tight timelines.',
+      "Developpement et maintenance de composants frontend en production avec HTML, CSS et JavaScript.",
+      "Creation d'interfaces responsives, pensees mobile-first, avec des ameliorations UI orientees ergonomie et performance.",
+      'Transformation des exigences produit et design en fonctionnalites concretes cote utilisateur.',
+      "Collaboration a distance dans un environnement startup rapide pour livrer des fonctionnalites dans des delais serres.",
     ],
   };
 

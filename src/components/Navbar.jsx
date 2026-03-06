@@ -8,7 +8,14 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const navItems = ['Home', 'Experience','Projects', 'About', 'Skills', 'Contact'];
+  const navItems = [
+    { label: 'Accueil', id: 'home' },
+    { label: 'Experience', id: 'experience' },
+    { label: 'Projets', id: 'projects' },
+    { label: 'A propos', id: 'about' },
+    { label: 'Competences', id: 'skills' },
+    { label: 'Contact', id: 'contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +25,9 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, item) => {
+  const handleNavClick = (e, itemId) => {
     e.preventDefault();
-    const sectionId = item.toLowerCase();
-    const section = document.getElementById(sectionId);
+    const section = document.getElementById(itemId);
     if (section) {
       if (isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
@@ -78,19 +84,19 @@ function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, idx) => (
               <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.id}
+                href={`#${item.id}`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 whileHover={{ y: -2 }}
-                onClick={(e) => handleNavClick(e, item)}
+                onClick={(e) => handleNavClick(e, item.id)}
                 className="relative group"
               >
                 <span className={`text-base font-medium transition-colors duration-200 ${
                   theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
                 }`}>
-                  {item}
+                  {item.label}
                 </span>
                 <motion.div
                   className={`absolute -bottom-1 left-0 h-0.5 ${
@@ -113,7 +119,7 @@ function Navbar() {
                   ? 'bg-[#b8f2e6]/10 text-[#b8f2e6] hover:bg-[#b8f2e6]/20' 
                   : 'bg-[#aed9e0]/20 text-[#5e6472] hover:bg-[#aed9e0]/30'
               }`}
-              aria-label="Toggle theme"
+              aria-label="Changer de theme"
             >
               <AnimatePresence mode="wait">
                 {theme === 'dark' ? (
@@ -152,7 +158,7 @@ function Navbar() {
                   ? 'bg-[#b8f2e6]/10 text-[#b8f2e6]' 
                   : 'bg-[#aed9e0]/20 text-[#5e6472]'
               }`}
-              aria-label="Toggle theme"
+              aria-label="Changer de theme"
             >
               <AnimatePresence mode="wait">
                 {theme === 'dark' ? (
@@ -188,7 +194,7 @@ function Navbar() {
                   ? 'bg-[#b8f2e6]/10 text-[#b8f2e6]' 
                   : 'bg-[#aed9e0]/20 text-[#5e6472]'
               }`}
-              aria-label="Toggle mobile menu"
+              aria-label="Ouvrir ou fermer le menu mobile"
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -230,21 +236,21 @@ function Navbar() {
               <div className="flex flex-col space-y-2 py-4">
                 {navItems.map((item, idx) => (
                   <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
+                    key={item.id}
+                    href={`#${item.id}`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
                     whileHover={{ x: 8 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={(e) => handleNavClick(e, item)}
+                    onClick={(e) => handleNavClick(e, item.id)}
                     className={`text-base font-medium px-4 py-3 rounded-xl transition-all duration-200 ${
                       theme === 'dark'
                         ? 'text-[#b8f2e6] hover:bg-[#b8f2e6]/10'
                         : 'text-[#5e6472] hover:bg-[#aed9e0]/20'
                     }`}
                   >
-                    {item}
+                    {item.label}
                   </motion.a>
                 ))}
               </div>

@@ -35,13 +35,13 @@ function Contact() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!isValidEmail(formData.email)) newErrors.email = 'Invalid email format';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    if (formData.name.length > 100) newErrors.name = 'Name must be under 100 characters';
-    if (formData.email.length > 100) newErrors.email = 'Email must be under 100 characters';
-    if (formData.message.length > 1000) newErrors.message = 'Message must be under 1000 characters';
+    if (!formData.name.trim()) newErrors.name = 'Le nom est requis';
+    if (!formData.email.trim()) newErrors.email = "L'email est requis";
+    else if (!isValidEmail(formData.email)) newErrors.email = "Format d'email invalide";
+    if (!formData.message.trim()) newErrors.message = 'Le message est requis';
+    if (formData.name.length > 100) newErrors.name = 'Le nom doit faire moins de 100 caracteres';
+    if (formData.email.length > 100) newErrors.email = "L'email doit faire moins de 100 caracteres";
+    if (formData.message.length > 1000) newErrors.message = 'Le message doit faire moins de 1000 caracteres';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -56,7 +56,7 @@ function Contact() {
       !import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
       !import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     ) {
-      setToast({ type: 'error', message: 'Configuration error. Please try again later.' });
+      setToast({ type: 'error', message: 'Erreur de configuration. Veuillez reessayer plus tard.' });
       return;
     }
 
@@ -79,7 +79,7 @@ function Contact() {
           setIsLoading(false);
           setFormData({ name: '', email: '', message: '' });
           setErrors({});
-          setToast({ type: 'success', message: 'Message sent successfully!' });
+          setToast({ type: 'success', message: 'Message envoye avec succes !' });
           if (ReactGA.isInitialized) {
             ReactGA.event({
               category: 'Contact Form',
@@ -91,10 +91,10 @@ function Contact() {
         (err) => {
           setIsLoading(false);
           const errorMessage = err.text?.includes('timeout')
-            ? 'Request timed out. Please try again.'
+            ? 'La requete a expire. Veuillez reessayer.'
             : err.text?.includes('invalid')
-            ? 'Invalid configuration. Please try again later.'
-            : 'Could not send message. Try again later.';
+            ? 'Configuration invalide. Veuillez reessayer plus tard.'
+            : "Impossible d'envoyer le message. Reessayez plus tard.";
           setToast({ type: 'error', message: errorMessage });
         }
       );
@@ -159,7 +159,7 @@ function Contact() {
               theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
             }`}
           >
-            Get In Touch
+            Contact
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}
@@ -185,12 +185,12 @@ function Contact() {
               <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${
                 theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
               }`}>
-                Let's Connect
+                Restons en contact
               </h3>
               <p className={`text-lg mb-8 ${
                 theme === 'dark' ? 'text-[#aed9e0]' : 'text-[#5e6472]'
               } opacity-90`}>
-                Have a project in mind or just want to chat? Feel free to reach out!
+                Vous avez un projet en tete ou envie de discuter ? N'hesitez pas a me contacter !
               </p>
             </div>
 
@@ -217,7 +217,7 @@ function Contact() {
                   <div>
                     <p className={`text-sm opacity-75 ${
                       theme === 'dark' ? 'text-[#aed9e0]' : 'text-[#5e6472]'
-                    }`}>Phone</p>
+                    }`}>Telephone</p>
                     <p className={`text-lg font-semibold ${
                       theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
                     }`}>+91 9726201738</p>
@@ -266,7 +266,7 @@ function Contact() {
               <p className={`text-sm mb-4 ${
                 theme === 'dark' ? 'text-[#aed9e0]' : 'text-[#5e6472]'
               } opacity-75`}>
-                Connect with me
+                Retrouvez-moi
               </p>
               <div className="flex space-x-4">
                 <motion.a
@@ -278,7 +278,7 @@ function Contact() {
                       ? 'bg-[#b8f2e6]/10 hover:bg-[#b8f2e6]/20 text-[#b8f2e6]'
                       : 'bg-[#aed9e0]/20 hover:bg-[#aed9e0]/40 text-[#5e6472]'
                   }`}
-                  aria-label="Social media link"
+                  aria-label="Lien vers les reseaux sociaux"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
@@ -297,9 +297,9 @@ function Contact() {
           >
             <div className="space-y-6">
               {[
-                { label: 'Name', type: 'text', id: 'name' },
-                { label: 'Email', type: 'email', id: 'email' },
-                { label: 'Message', type: 'textarea', id: 'message' }
+                { label: 'Nom', type: 'text', id: 'name', placeholder: 'Entrez votre nom' },
+                { label: 'Email', type: 'email', id: 'email', placeholder: 'Entrez votre email' },
+                { label: 'Message', type: 'textarea', id: 'message', placeholder: 'Entrez votre message' }
               ].map((field, idx) => (
                 <motion.div
                   key={field.id}
@@ -334,7 +334,7 @@ function Contact() {
                           ? 'border-red-500 bg-white text-[#5e6472] focus:ring-red-500/50'
                           : 'border-[#aed9e0]/50 bg-white text-[#5e6472] focus:border-[#aed9e0] focus:ring-[#aed9e0]/30'
                       }`}
-                      placeholder={`Enter your ${field.label.toLowerCase()}`}
+                      placeholder={field.placeholder}
                       aria-invalid={!!errors[field.id]}
                       aria-describedby={`${field.id}-error`}
                     />
@@ -355,7 +355,7 @@ function Contact() {
                           ? 'border-red-500 bg-white text-[#5e6472] focus:ring-red-500/50'
                           : 'border-[#aed9e0]/50 bg-white text-[#5e6472] focus:border-[#aed9e0] focus:ring-[#aed9e0]/30'
                       }`}
-                      placeholder={`Enter your ${field.label.toLowerCase()}`}
+                      placeholder={field.placeholder}
                       aria-invalid={!!errors[field.id]}
                       aria-describedby={`${field.id}-error`}
                     />
@@ -391,7 +391,7 @@ function Contact() {
                     ? 'bg-[#b8f2e6] text-[#5e6472] hover:shadow-lg hover:shadow-[#b8f2e6]/30'
                     : 'bg-[#aed9e0] text-[#5e6472] hover:shadow-lg hover:shadow-[#aed9e0]/30'
                 } ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                aria-label="Send message"
+                aria-label="Envoyer le message"
               >
                 <span className="relative z-10 flex items-center justify-center">
                   {isLoading ? (
@@ -406,11 +406,11 @@ function Contact() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </motion.svg>
-                      Sending...
+                      Envoi...
                     </>
                   ) : (
                     <>
-                      Send Message
+                      Envoyer le message
                       <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>

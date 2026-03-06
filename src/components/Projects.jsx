@@ -9,24 +9,18 @@ function Projects() {
     const projects = [
         {
             title: 'Budget Buddy',
-            description: 'Developed a responsive personal finance web application that enables users to set monthly budgets, track categorized expenses, and monitor spending in real time.',
-            tags: ['HTML5', 'CSS3', 'JavaScript'],
-            link: 'https://my-budget-buddy-app.netlify.app/', 
-            github: 'https://github.com/A23droid/budget-buddy' 
+            description: "Application web de gestion budgetaire responsive permettant de definir des budgets mensuels, suivre des depenses par categorie et monitorer les depenses en temps reel.",
+            tags: ['HTML5', 'CSS3', 'JavaScript']
         },
         {
             title: 'Quick Talk',
-            description: 'A sleek, responsive real-time chat app built with React and TailwindCSS. Supports light/dark themes, smooth animations, and keyboard shortcuts.',
-            tags: ['React', 'TailwindCSS'],
-            link: 'https://quick-talk-red.vercel.app/', 
-            github: 'https://github.com/A23droid/quick-talk'
+            description: 'Application de chat en temps reel, moderne et responsive, construite avec React et TailwindCSS. Prend en charge les themes clair/sombre, des animations fluides et des raccourcis clavier.',
+            tags: ['React', 'TailwindCSS']
         },
         {
             title: 'The LogBook',
-            description: 'Built a developer-focused blog featuring dynamic routing, tag-based filtering, and Markdown-driven content. Implemented a consistent dark-theme UI and deployed the production build on Vercel.',
-            tags: ['Astro', 'React', 'TailwindCSS'],
-            link: 'https://the-logbook-seven.vercel.app/',
-            github: 'https://github.com/A23droid/the-logbook'
+            description: "Blog oriente developpeurs avec routage dynamique, filtrage par tags et contenu gere en Markdown. Interface sombre coherente et deploiement de la version de production sur Vercel.",
+            tags: ['Astro', 'React', 'TailwindCSS']
         }
     ];
 
@@ -94,7 +88,7 @@ function Projects() {
                             theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                         }`}
                     >
-                        Projects
+                        Projets
                     </motion.h2>
                     <motion.div
                         initial={{ width: 0 }}
@@ -114,7 +108,7 @@ function Projects() {
                             theme === "dark" ? "text-[#aed9e0]" : "text-[#5e6472]"
                         } opacity-90`}
                     >
-                        Here are some of my recent projects that showcase my skills and passion for web development
+                        Voici quelques projets recents qui illustrent mes competences et ma passion pour le developpement web.
                     </motion.p>
                 </motion.div>
 
@@ -131,7 +125,6 @@ function Projects() {
                     ))}
                 </motion.div>
 
-                {/* View More Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -139,10 +132,8 @@ function Projects() {
                     transition={{ duration: 0.6, delay: 0.8 }}
                     className="text-center mt-16"
                 >
-                    <motion.a
-                        href="https://github.com/A23droid"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <motion.button
+                        type="button"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
@@ -150,8 +141,9 @@ function Projects() {
                                 ? "bg-[#b8f2e6]/10 text-[#b8f2e6] border-2 border-[#b8f2e6]/30 hover:bg-[#b8f2e6]/20 hover:border-[#b8f2e6]/50"
                                 : "bg-[#aed9e0]/20 text-[#5e6472] border-2 border-[#aed9e0]/40 hover:bg-[#aed9e0]/30 hover:border-[#aed9e0]/60"
                         }`}
+                        aria-label="Bouton Voir plus de projets"
                     >
-                        <span>View More Projects</span>
+                        <span>Voir plus de projets</span>
                         <motion.svg
                             className="w-5 h-5"
                             fill="none"
@@ -162,8 +154,9 @@ function Projects() {
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </motion.svg>
-                    </motion.a>
+                    </motion.button>
                 </motion.div>
+
             </div>
         </section>
     );

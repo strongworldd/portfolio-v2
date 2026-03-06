@@ -102,7 +102,7 @@ function Skills() {
                             theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                         }`}
                     >
-                        Skills
+                        Competences
                     </motion.h2>
                     <motion.div
                         initial={{ width: 0 }}

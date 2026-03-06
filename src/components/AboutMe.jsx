@@ -82,7 +82,7 @@ function AboutMe() {
                             }`}>
                                 <motion.img
                                     src={theme === "dark" ? ProfileDark : ProfileLight}
-                                    alt="Profile"
+                                    alt="Profil"
                                     className="w-full h-full object-cover"
                                     initial={{ scale: 1.1 }}
                                     whileInView={{ scale: 1 }}
@@ -151,7 +151,7 @@ function AboutMe() {
                                     theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                                 }`}
                             >
-                                About Me
+                                A propos de moi
                             </motion.h2>
                             
                             <motion.div
@@ -175,11 +175,11 @@ function AboutMe() {
                             }`}
                         >
                             <p className="text-xl md:text-2xl font-light">
-                                I'm a passionate developer with a knack for building clean, efficient, and user-friendly applications.
+                                Je suis un developpeur passionne, specialise dans la creation d'applications propres, performantes et agreables a utiliser.
                             </p>
                             
                             <p className="text-base md:text-lg opacity-90">
-                                I love exploring new technologies and solving complex problems with creative solutions.
+                                J'aime explorer de nouvelles technologies et resoudre des problemes complexes avec des solutions creatives.
                             </p>
 
                             

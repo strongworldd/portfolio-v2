@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
-import { FaGithub } from 'react-icons/fa'; 
+import { FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { ThemeContext } from '../App';
 
-function ProjectCard({ title, description, tags, link, github }) {
+function ProjectCard({ title, description, tags }) {
     const { theme } = useContext(ThemeContext);
     
     return (
@@ -85,50 +85,42 @@ function ProjectCard({ title, description, tags, link, github }) {
                         ))}
                     </div>
 
-                    {/* Links */}
                     <div className="flex gap-4 items-center pt-4 border-t-2 border-opacity-20 border-current">
-                        {link && (
-                            <motion.a
-                                href={link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05, x: 5 }}
-                                whileTap={{ scale: 0.95 }}
-                                className={`flex items-center gap-2 font-semibold transition-colors group/link ${
-                                    theme === "dark" 
-                                        ? "text-[#b8f2e6] hover:text-[#aed9e0]" 
-                                        : "text-[#5e6472] hover:text-[#aed9e0]"
-                                }`}
+                        <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.05, x: 5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`flex items-center gap-2 font-semibold transition-colors group/link ${
+                                theme === "dark"
+                                    ? "text-[#b8f2e6] hover:text-[#aed9e0]"
+                                    : "text-[#5e6472] hover:text-[#aed9e0]"
+                            }`}
+                            aria-label="Bouton Voir le site"
+                        >
+                            <span>Voir le site</span>
+                            <svg
+                                className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                             >
-                                <span>View Live</span>
-                                <svg 
-                                    className="w-4 h-4 transition-transform group-hover/link:translate-x-1" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </motion.a>
-                        )}
-                        {github && (
-                            <motion.a
-                                href={github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.15, rotate: 360 }}
-                                whileTap={{ scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                                className={`p-2 rounded-lg transition-all ${
-                                    theme === "dark" 
-                                        ? "text-[#b8f2e6] hover:bg-[#b8f2e6]/20" 
-                                        : "text-[#5e6472] hover:bg-[#aed9e0]/30"
-                                }`}
-                                aria-label="View GitHub repository"
-                            >
-                                <FaGithub size={24} />
-                            </motion.a>
-                        )}
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </motion.button>
+                        <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.15, rotate: 360 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ duration: 0.3 }}
+                            className={`p-2 rounded-lg transition-all ${
+                                theme === "dark"
+                                    ? "text-[#b8f2e6] hover:bg-[#b8f2e6]/20"
+                                    : "text-[#5e6472] hover:bg-[#aed9e0]/30"
+                            }`}
+                            aria-label="Bouton GitHub"
+                        >
+                            <FaGithub size={24} />
+                        </motion.button>
                     </div>
                 </div>
 
