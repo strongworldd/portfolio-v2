@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 import { ThemeContext } from '../App';
 import { useContext, useMemo } from 'react';
 import ReactGA from 'react-ga4';
@@ -31,7 +31,7 @@ function Hero() {
   };
 
   // Memoize name letters to prevent re-computation
-  const nameLetters = useMemo(() => "Aditya Pillai".split(""), []);
+  const nameLetters = useMemo(() => "Kévin Michot".split(""), []);
 
   return (
     <section
@@ -42,7 +42,7 @@ function Hero() {
     >
       {/* Optimized background blobs - reduced opacity for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        <Motion.div
           animate={{
             scale: [1, 1.15, 1],
             x: [0, 80, 0],
@@ -57,7 +57,7 @@ function Hero() {
             theme === "dark" ? "bg-[#b8f2e6]" : "bg-[#aed9e0]"
           }`}
         />
-        <motion.div
+        <Motion.div
           animate={{
             scale: [1, 1.2, 1],
             x: [0, -60, 0],
@@ -75,14 +75,14 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <motion.div
+      <Motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="text-center relative z-10 max-w-5xl mx-auto"
       >
         {/* Greeting */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -91,10 +91,10 @@ function Hero() {
           }`}
         >
           Bonjour, je suis
-        </motion.div>
+        </Motion.div>
 
         {/* Name - Optimized with reduced animations */}
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -104,7 +104,7 @@ function Hero() {
             theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
           }`}>
             {nameLetters.map((char, i) => (
-              <motion.span
+              <Motion.span
                 key={`${char}-${i}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -115,12 +115,12 @@ function Hero() {
                 className="inline-block"
               >
                 {char === " " ? "\u00A0" : char}
-              </motion.span>
+              </Motion.span>
             ))}
           </span>
           
           {/* Center-spreading underline */}
-          <motion.div
+          <Motion.div
             className={`absolute -bottom-2 left-1/2 h-1 rounded-full ${
               theme === "dark" ? "bg-[#b8f2e6]" : "bg-[#aed9e0]"
             }`}
@@ -132,10 +132,10 @@ function Hero() {
             }}
             style={{ transformOrigin: "center" }}
           />
-        </motion.h1>
+        </Motion.h1>
 
         {/* Tagline */}
-        <motion.p
+        <Motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -143,11 +143,11 @@ function Hero() {
             theme === "dark" ? "text-[#aed9e0]/90" : "text-[#5e6472]/80"
           }`}
         >
-          Developpeur full-stack et esprit creatif
-        </motion.p>
+          Étudiant en cybersécurité
+        </Motion.p>
 
         {/* Decorative line */}
-        <motion.div
+        <Motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -157,14 +157,14 @@ function Hero() {
         />
 
         {/* CTA Buttons - Optimized layout */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row gap-5 justify-center items-center"
         >
           {/* Primary CTA */}
-          <motion.button
+          <Motion.button
             onClick={handleResume}
             whileHover={{ y: -4 }}
             whileTap={{ scale: 0.98 }}
@@ -185,7 +185,7 @@ function Hero() {
             aria-label="Voir mon CV"
           >
             {/* Shine effect */}
-            <motion.div
+            <Motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-100"
               style={{
                 background: theme === "dark"
@@ -206,10 +206,10 @@ function Hero() {
               <FileText size={20} className="flex-shrink-0" />
               Voir mon CV
             </span>
-          </motion.button>
+          </Motion.button>
 
           {/* Secondary CTA */}
-          <motion.a
+          <Motion.a
             href="#contact"
             onClick={handleContactScroll}
             whileHover={{ y: -4 }}
@@ -229,18 +229,18 @@ function Hero() {
               <Mail size={20} className="flex-shrink-0" />
               Me contacter
             </span>
-          </motion.a>
-        </motion.div>
+          </Motion.a>
+        </Motion.div>
 
         {/* Scroll indicator - Optimized animation */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.5 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
         >
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
     </section>
   );
 }
