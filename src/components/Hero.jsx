@@ -3,6 +3,7 @@ import { ThemeContext } from '../App';
 import { useContext, useMemo } from 'react';
 import ReactGA from 'react-ga4';
 import { FileText, Mail } from 'lucide-react';
+import resumePdf from '../assets/CV Kévin MICHOT.pdf';
 
 function Hero() {
   const { theme } = useContext(ThemeContext);
@@ -16,10 +17,7 @@ function Hero() {
       });
     }
 
-    document.getElementById('projects')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    window.open(resumePdf, '_blank', 'noopener,noreferrer');
   };
 
   const handleContactScroll = (e) => {

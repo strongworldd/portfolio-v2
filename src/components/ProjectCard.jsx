@@ -3,8 +3,9 @@ import { FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { ThemeContext } from '../App';
 
-function ProjectCard({ title, description, tags }) {
+function ProjectCard({ title, description, image, imageAlt, githubUrl }) {
     const { theme } = useContext(ThemeContext);
+    const hasContent = Boolean(title || description || image);
     
     return (
         <motion.div
@@ -16,7 +17,7 @@ function ProjectCard({ title, description, tags }) {
             className="group relative h-full"
         >
             {/* Card container */}
-            <div className={`h-full p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-500 relative overflow-hidden ${
+            <div className={`h-full min-h-[320px] p-8 rounded-3xl backdrop-blur-sm border-2 transition-all duration-500 relative overflow-hidden ${
                 theme === "dark" 
                     ? "bg-[#5e6472]/30 border-[#b8f2e6]/20 hover:border-[#b8f2e6]/50 hover:bg-[#5e6472]/50" 
                     : "bg-white/80 border-[#aed9e0]/30 hover:border-[#aed9e0]/60 hover:bg-white"
@@ -46,83 +47,83 @@ function ProjectCard({ title, description, tags }) {
                     }}
                 />
 
-                <div className="relative z-10 flex flex-col h-full">
-                    {/* Title */}
-                    <motion.h3
-                        className={`text-2xl md:text-3xl font-bold mb-4 ${
-                            theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
-                        }`}
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        {title}
-                    </motion.h3>
+                {hasContent ? (
+                    <div className="relative z-10 h-full flex flex-col">
+                        {image && (
+                            <div className="w-full h-40 mb-5 rounded-2xl overflow-hidden">
+                                <img
+                                    src={image}
+                                    alt={imageAlt || title || 'Illustration du projet'}
+                                    className="w-full h-full object-contain scale-[1.4]"
+                                />
+                            </div>
+                        )}
 
-                    {/* Description */}
-                    <p className={`mb-6 leading-relaxed flex-grow ${
-                        theme === "dark" ? "text-[#aed9e0]" : "text-[#5e6472]"
-                    } opacity-90`}>
-                        {description}
-                    </p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                        {tags.map((tag, i) => (
-                            <motion.span
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
-                                whileHover={{ scale: 1.1 }}
-                                className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                                    theme === "dark"
-                                        ? "bg-[#b8f2e6]/20 text-[#b8f2e6] hover:bg-[#b8f2e6]/30"
-                                        : "bg-[#aed9e0]/40 text-[#5e6472] hover:bg-[#aed9e0]/60"
+                        {title && (
+                            <h3
+                                className={`text-2xl font-bold mb-3 ${
+                                    theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                                 }`}
                             >
-                                {tag}
-                            </motion.span>
-                        ))}
-                    </div>
+                                {title}
+                            </h3>
+                        )}
 
-                    <div className="flex gap-4 items-center pt-4 border-t-2 border-opacity-20 border-current">
-                        <motion.button
-                            type="button"
-                            whileHover={{ scale: 1.05, x: 5 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={`flex items-center gap-2 font-semibold transition-colors group/link ${
-                                theme === "dark"
-                                    ? "text-[#b8f2e6] hover:text-[#aed9e0]"
-                                    : "text-[#5e6472] hover:text-[#aed9e0]"
-                            }`}
-                            aria-label="Bouton Voir le site"
-                        >
-                            <span>Voir le site</span>
-                            <svg
-                                className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
+                        {description && (
+                            <p
+                                className={`leading-relaxed ${
+                                    theme === "dark" ? "text-[#aed9e0]" : "text-[#5e6472]"
+                                } opacity-90`}
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </motion.button>
-                        <motion.button
-                            type="button"
-                            whileHover={{ scale: 1.15, rotate: 360 }}
-                            whileTap={{ scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                            className={`p-2 rounded-lg transition-all ${
-                                theme === "dark"
-                                    ? "text-[#b8f2e6] hover:bg-[#b8f2e6]/20"
-                                    : "text-[#5e6472] hover:bg-[#aed9e0]/30"
-                            }`}
-                            aria-label="Bouton GitHub"
-                        >
-                            <FaGithub size={24} />
-                        </motion.button>
+                                {description}
+                            </p>
+                        )}
+
+                        {githubUrl && (
+                            <motion.a
+                                href={githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.03, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className={`mt-6 inline-flex w-fit items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${
+                                    theme === "dark"
+                                        ? "bg-[#b8f2e6]/15 text-[#b8f2e6] border border-[#b8f2e6]/30 hover:bg-[#b8f2e6]/25"
+                                        : "bg-[#aed9e0]/30 text-[#5e6472] border border-[#aed9e0]/50 hover:bg-[#aed9e0]/45"
+                                }`}
+                                aria-label="Voir le depot GitHub du projet"
+                            >
+                                <FaGithub size={16} />
+                                <span>Voir le dépôt GitHub</span>
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </motion.a>
+                        )}
                     </div>
-                </div>
+                ) : (
+                    <div className="relative z-10 h-full">
+                        <motion.div
+                            className={`w-full h-full rounded-2xl ${
+                                theme === "dark" ? "bg-[#b8f2e6]/5" : "bg-[#aed9e0]/10"
+                            }`}
+                            animate={{
+                                opacity: [0.3, 0.6, 0.3],
+                                scale: [1, 1.02, 1]
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    </div>
+                )}
 
                 {/* Hover shine effect */}
                 <motion.div

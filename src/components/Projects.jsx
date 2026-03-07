@@ -2,25 +2,35 @@ import { motion } from 'motion/react';
 import ProjectCard from './ProjectCard';
 import { useContext } from 'react';
 import { ThemeContext } from '../App';
+import ctfImage from '../assets/CTF.png';
+import authImage from '../assets/auth.png';
+import windowsImage from '../assets/Windows.png';
 
 function Projects() {
     const { theme } = useContext(ThemeContext);
     
-    const projects = [
+    const projectSlots = [
         {
-            title: 'Budget Buddy',
-            description: "Application web de gestion budgétaire responsive permettant de définir des budgets mensuels, suivre des dépenses par catégorie et monitorer les dépenses en temps réel.",
-            tags: ['HTML5', 'CSS3', 'JavaScript']
+            title: 'Hacoeur',
+            description:
+                "Création d'un CTF d'initiation à la cybersécurité, pensé pour les débutants dans le cadre d'un projet scolaire en groupe. J'ai contribué à la conception des challenges OSINT et stéganographie.",
+            image: ctfImage,
+            imageAlt: 'Capture du projet CTF Hacoeur'
         },
         {
-            title: 'Quick Talk',
-            description: 'Application de chat en temps réel, moderne et responsive, construite avec React et TailwindCSS. Prend en charge les thèmes clair/sombre, des animations fluides et des raccourcis clavier.',
-            tags: ['React', 'TailwindCSS']
+            title: "Authentification PHP",
+            description:
+                "Projet scolaire réalisé en groupe pour créer un site e-commerce en PHP. J'ai pris en charge la mise en place du système d'inscription et de connexion des utilisateurs.",
+            image: authImage,
+            imageAlt: "Capture du module d'authentification PHP",
+            githubUrl: 'https://github.com/tymds/PHP-Site-Ecommerce'
         },
         {
-            title: 'The LogBook',
-            description: "Blog orienté développeurs avec routage dynamique, filtrage par tags et contenu géré en Markdown. Interface sombre cohérente et déploiement de la version de production sur Vercel.",
-            tags: ['Astro', 'React', 'TailwindCSS']
+            title: 'Infrastructure Windows Server',
+            description:
+                "Mise en place d'un serveur Windows avec Active Directory, DHCP et DNS dans le cadre d'un projet scolaire.",
+            image: windowsImage,
+            imageAlt: 'Configuration Windows Server avec AD, DHCP et DNS'
         }
     ];
 
@@ -120,41 +130,9 @@ function Projects() {
                     viewport={{ once: true, margin: "-100px" }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {projects.map((project, i) => (
-                        <ProjectCard key={i} {...project} />
+                    {projectSlots.map((project, index) => (
+                        <ProjectCard key={index} {...project} />
                     ))}
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="text-center mt-16"
-                >
-                    <motion.button
-                        type="button"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
-                            theme === "dark"
-                                ? "bg-[#b8f2e6]/10 text-[#b8f2e6] border-2 border-[#b8f2e6]/30 hover:bg-[#b8f2e6]/20 hover:border-[#b8f2e6]/50"
-                                : "bg-[#aed9e0]/20 text-[#5e6472] border-2 border-[#aed9e0]/40 hover:bg-[#aed9e0]/30 hover:border-[#aed9e0]/60"
-                        }`}
-                        aria-label="Bouton Voir plus de projets"
-                    >
-                        <span>Voir plus de projets</span>
-                        <motion.svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </motion.svg>
-                    </motion.button>
                 </motion.div>
 
             </div>
