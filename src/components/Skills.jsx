@@ -1,25 +1,58 @@
 import { motion } from 'motion/react';
 import { useContext } from 'react';
 import { ThemeContext } from '../App';
+import AcademicianBadge from '../assets/academician.webp';
+import EverythingConnectedBadge from '../assets/everything-is-connected.webp';
+import TraditionalWayBadge from '../assets/do-things-the-traditional-way.webp';
 
 function Skills() {
     const {theme} = useContext(ThemeContext);
-    const skills = [
-        'HTML5',
-        'CSS3',
-        'JavaScript',
-        'React',
-        'Python',
-        'Tailwind CSS',
-        'Java',
-        'C++',
-        'C',
-        'Astro', 
-        'Vite',
-        'CLI Development',
-        'Git',
-        'GitHub',
-        'UI/UX',
+    const htbBadges = [
+        { image: AcademicianBadge, label: 'Académicien', alt: 'Badge Hack The Box Academician' },
+        { image: EverythingConnectedBadge, label: 'Tout est connecté', alt: 'Badge Hack The Box Everything Is Connected' },
+        { image: TraditionalWayBadge, label: 'Faites les choses de manière traditionnelle', alt: 'Badge Hack The Box Do Things The Traditional Way' },
+    ];
+
+    const skillSections = [
+        {
+            title: 'Infrastructure systèmes et réseaux',
+            skills: [
+                'TCP/IP',
+                'Modèle OSI',
+                'VLAN',
+                'VXLAN',
+                'DHCP',
+                'DNS',
+                'Active Directory',
+                'Windows Server',
+                'Virtualisation',
+                'Linux',
+            ],
+        },
+        {
+            title: "Systèmes d'exploitation",
+            skills: ['Kali Linux', 'Debian', 'Ubuntu', 'Windows'],
+        },
+        {
+            title: 'Scripting',
+            skills: ['Bash', 'Python'],
+        },
+        {
+            title: 'Développement Web',
+            skills: ['HTML', 'CSS', 'JS', 'Java', 'Golang', 'TypeScript', 'PHP', 'SQL'],
+        },
+        {
+            title: 'Outils',
+            skills: [
+                'Cisco Packet Tracer',
+                'Metasploit',
+                'Nmap',
+                'Wireshark',
+                'VSCode',
+                'VirtualBox',
+                'GitHub',
+            ],
+        },
     ];
 
     const containerVariants = {
@@ -102,11 +135,12 @@ function Skills() {
                             theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                         }`}
                     >
-                        Competences
+                        Compétences
                     </motion.h2>
                     <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: "6rem" }}
+                        whileInView={{ width: "6rem" }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className={`h-1 mx-auto rounded-full ${
                             theme === "dark" ? "bg-[#b8f2e6]" : "bg-[#aed9e0]"
@@ -119,63 +153,94 @@ function Skills() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
+                    className="space-y-8"
                 >
-                    {skills.map((skill, i) => (
+                    {skillSections.map((section, sectionIndex) => (
                         <motion.div
-                            key={i}
+                            key={section.title}
                             variants={itemVariants}
-                            whileHover={{ 
-                                scale: 1.05,
-                                y: -8,
-                                transition: { 
-                                    type: "spring", 
-                                    stiffness: 400, 
-                                    damping: 10 
-                                }
-                            }}
-                            className="group relative"
+                            className={`rounded-3xl p-6 md:p-8 border backdrop-blur-sm ${
+                                theme === "dark"
+                                    ? "bg-[#b8f2e6]/5 border-[#b8f2e6]/20"
+                                    : "bg-[#aed9e0]/20 border-[#aed9e0]/40"
+                            }`}
                         >
-                            <motion.div
-                                className={`relative p-6 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
-                                    theme === "dark" 
-                                        ? "bg-[#b8f2e6]/10 border-[#b8f2e6]/20 hover:bg-[#b8f2e6]/20 hover:border-[#b8f2e6]/40" 
-                                        : "bg-[#aed9e0]/30 border-[#aed9e0]/40 hover:bg-[#aed9e0]/50 hover:border-[#aed9e0]/60"
-                                }`}
-                            >
-                                {/* Shine effect on hover */}
-                                <motion.div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                    style={{
-                                        background: theme === "dark"
-                                            ? "linear-gradient(135deg, transparent 0%, rgba(184, 242, 230, 0.1) 50%, transparent 100%)"
-                                            : "linear-gradient(135deg, transparent 0%, rgba(174, 217, 224, 0.2) 50%, transparent 100%)"
-                                    }}
-                                />
-                                
-                                <span className={`relative text-base md:text-lg font-semibold text-center block ${
-                                    theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
-                                }`}>
-                                    {skill}
-                                </span>
+                            <h3 className={`text-2xl md:text-3xl font-semibold mb-5 ${
+                                theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
+                            }`}>
+                                {section.title}
+                            </h3>
 
-                                {/* Floating dots decoration */}
-                                <motion.div
-                                    className={`absolute -top-1 -right-1 w-2 h-2 rounded-full opacity-0 group-hover:opacity-100 ${
-                                        theme === "dark" ? "bg-[#b8f2e6]" : "bg-[#5e6472]"
-                                    }`}
-                                    animate={{
-                                        scale: [1, 1.5, 1],
-                                    }}
-                                    transition={{
-                                        duration: 2,
-                                        repeat: Infinity,
-                                        ease: "easeInOut"
-                                    }}
-                                />
-                            </motion.div>
+                            <div className="flex flex-wrap gap-3">
+                                {section.skills.map((skill) => (
+                                    <motion.span
+                                        key={`${sectionIndex}-${skill}`}
+                                        whileHover={{
+                                            scale: 1.05,
+                                            y: -4,
+                                            transition: {
+                                                type: "spring",
+                                                stiffness: 350,
+                                                damping: 14
+                                            }
+                                        }}
+                                        className={`px-4 py-2 rounded-xl text-sm md:text-base font-medium border ${
+                                            theme === "dark"
+                                                ? "bg-[#b8f2e6]/10 border-[#b8f2e6]/30 text-[#b8f2e6]"
+                                                : "bg-[#aed9e0]/50 border-[#aed9e0]/70 text-[#5e6472]"
+                                        }`}
+                                    >
+                                        {skill}
+                                    </motion.span>
+                                ))}
+                            </div>
                         </motion.div>
                     ))}
+
+                    <motion.div
+                        variants={itemVariants}
+                        className={`rounded-3xl p-6 md:p-8 border-2 ${
+                            theme === "dark"
+                                ? "border-[#b8f2e6]/60 bg-gradient-to-br from-[#b8f2e6]/10 to-transparent"
+                                : "border-[#5e6472]/30 bg-gradient-to-br from-[#aed9e0]/40 to-white/20"
+                        }`}
+                    >
+                        <h3 className={`text-2xl md:text-3xl font-semibold mb-6 ${
+                            theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
+                        }`}>
+                            Badges Hack The Box
+                        </h3>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {htbBadges.map((badge) => (
+                                <motion.div
+                                    key={badge.label}
+                                    whileHover={{ y: -6, scale: 1.02 }}
+                                    className={`rounded-2xl p-4 border ${
+                                        theme === "dark"
+                                            ? "border-[#b8f2e6]/35 bg-[#1c1c1c]/45"
+                                            : "border-[#5e6472]/25 bg-white/60"
+                                    }`}
+                                >
+                                    <div className={`h-36 rounded-xl flex items-center justify-center overflow-hidden ${
+                                        theme === "dark" ? "bg-[#0f0f0f]/40" : "bg-[#f3f7f8]"
+                                    }`}>
+                                        <img
+                                            src={badge.image}
+                                            alt={badge.alt}
+                                            className="max-h-full max-w-full object-contain"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <p className={`mt-3 text-center text-sm md:text-base font-medium ${
+                                        theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
+                                    }`}>
+                                        {badge.label}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

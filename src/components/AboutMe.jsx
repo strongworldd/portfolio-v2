@@ -151,7 +151,7 @@ function AboutMe() {
                                     theme === "dark" ? "text-[#b8f2e6]" : "text-[#5e6472]"
                                 }`}
                             >
-                                A propos de moi
+                                À propos de moi
                             </motion.h2>
                             
                             <motion.div
@@ -175,11 +175,11 @@ function AboutMe() {
                             }`}
                         >
                             <p className="text-xl md:text-2xl font-light">
-                                Je suis un developpeur passionne, specialise dans la creation d'applications propres, performantes et agreables a utiliser.
+                                Je suis étudiant en cybersécurité, actuellement en 2e année de Bachelor, avec un fort intérêt pour la sécurité offensive.
                             </p>
                             
                             <p className="text-base md:text-lg opacity-90">
-                                J'aime explorer de nouvelles technologies et resoudre des problemes complexes avec des solutions creatives.
+                                Je vise un Master en cybersécurité pour devenir expert cyber, avec un objectif de pentester : identifier des vulnérabilités, réaliser des tests d'intrusion et proposer des correctifs concrets pour renforcer la sécurité des systèmes.
                             </p>
 
                             

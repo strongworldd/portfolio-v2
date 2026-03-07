@@ -9,17 +9,17 @@ function Projects() {
     const projects = [
         {
             title: 'Budget Buddy',
-            description: "Application web de gestion budgetaire responsive permettant de definir des budgets mensuels, suivre des depenses par categorie et monitorer les depenses en temps reel.",
+            description: "Application web de gestion budgétaire responsive permettant de définir des budgets mensuels, suivre des dépenses par catégorie et monitorer les dépenses en temps réel.",
             tags: ['HTML5', 'CSS3', 'JavaScript']
         },
         {
             title: 'Quick Talk',
-            description: 'Application de chat en temps reel, moderne et responsive, construite avec React et TailwindCSS. Prend en charge les themes clair/sombre, des animations fluides et des raccourcis clavier.',
+            description: 'Application de chat en temps réel, moderne et responsive, construite avec React et TailwindCSS. Prend en charge les thèmes clair/sombre, des animations fluides et des raccourcis clavier.',
             tags: ['React', 'TailwindCSS']
         },
         {
             title: 'The LogBook',
-            description: "Blog oriente developpeurs avec routage dynamique, filtrage par tags et contenu gere en Markdown. Interface sombre coherente et deploiement de la version de production sur Vercel.",
+            description: "Blog orienté développeurs avec routage dynamique, filtrage par tags et contenu géré en Markdown. Interface sombre cohérente et déploiement de la version de production sur Vercel.",
             tags: ['Astro', 'React', 'TailwindCSS']
         }
     ];
@@ -108,7 +108,7 @@ function Projects() {
                             theme === "dark" ? "text-[#aed9e0]" : "text-[#5e6472]"
                         } opacity-90`}
                     >
-                        Voici quelques projets recents qui illustrent mes competences et ma passion pour le developpement web.
+                        Voici quelques projets récents qui illustrent mes compétences et ma passion pour le développement web.
                     </motion.p>
                 </motion.div>
 

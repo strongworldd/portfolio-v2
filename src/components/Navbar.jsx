@@ -10,10 +10,10 @@ function Navbar() {
 
   const navItems = [
     { label: 'Accueil', id: 'home' },
-    { label: 'Experience', id: 'experience' },
+    { label: 'Formation', id: 'experience' },
     { label: 'Projets', id: 'projects' },
-    { label: 'A propos', id: 'about' },
-    { label: 'Competences', id: 'skills' },
+    { label: 'À propos', id: 'about' },
+    { label: 'Compétences', id: 'skills' },
     { label: 'Contact', id: 'contact' },
   ];
 
@@ -119,7 +119,7 @@ function Navbar() {
                   ? 'bg-[#b8f2e6]/10 text-[#b8f2e6] hover:bg-[#b8f2e6]/20' 
                   : 'bg-[#aed9e0]/20 text-[#5e6472] hover:bg-[#aed9e0]/30'
               }`}
-              aria-label="Changer de theme"
+              aria-label="Changer de thème"
             >
               <AnimatePresence mode="wait">
                 {theme === 'dark' ? (
@@ -158,7 +158,7 @@ function Navbar() {
                   ? 'bg-[#b8f2e6]/10 text-[#b8f2e6]' 
                   : 'bg-[#aed9e0]/20 text-[#5e6472]'
               }`}
-              aria-label="Changer de theme"
+              aria-label="Changer de thème"
             >
               <AnimatePresence mode="wait">
                 {theme === 'dark' ? (

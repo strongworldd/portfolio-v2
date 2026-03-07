@@ -39,9 +39,9 @@ function Contact() {
     if (!formData.email.trim()) newErrors.email = "L'email est requis";
     else if (!isValidEmail(formData.email)) newErrors.email = "Format d'email invalide";
     if (!formData.message.trim()) newErrors.message = 'Le message est requis';
-    if (formData.name.length > 100) newErrors.name = 'Le nom doit faire moins de 100 caracteres';
-    if (formData.email.length > 100) newErrors.email = "L'email doit faire moins de 100 caracteres";
-    if (formData.message.length > 1000) newErrors.message = 'Le message doit faire moins de 1000 caracteres';
+    if (formData.name.length > 100) newErrors.name = 'Le nom doit faire moins de 100 caractères';
+    if (formData.email.length > 100) newErrors.email = "L'email doit faire moins de 100 caractères";
+    if (formData.message.length > 1000) newErrors.message = 'Le message doit faire moins de 1000 caractères';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -56,7 +56,7 @@ function Contact() {
       !import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
       !import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     ) {
-      setToast({ type: 'error', message: 'Erreur de configuration. Veuillez reessayer plus tard.' });
+      setToast({ type: 'error', message: 'Erreur de configuration. Veuillez réessayer plus tard.' });
       return;
     }
 
@@ -79,7 +79,7 @@ function Contact() {
           setIsLoading(false);
           setFormData({ name: '', email: '', message: '' });
           setErrors({});
-          setToast({ type: 'success', message: 'Message envoye avec succes !' });
+          setToast({ type: 'success', message: 'Message envoyé avec succès !' });
           if (ReactGA.isInitialized) {
             ReactGA.event({
               category: 'Contact Form',
@@ -91,10 +91,10 @@ function Contact() {
         (err) => {
           setIsLoading(false);
           const errorMessage = err.text?.includes('timeout')
-            ? 'La requete a expire. Veuillez reessayer.'
+            ? 'La requête a expiré. Veuillez réessayer.'
             : err.text?.includes('invalid')
-            ? 'Configuration invalide. Veuillez reessayer plus tard.'
-            : "Impossible d'envoyer le message. Reessayez plus tard.";
+            ? 'Configuration invalide. Veuillez réessayer plus tard.'
+            : "Impossible d'envoyer le message. Réessayez plus tard.";
           setToast({ type: 'error', message: errorMessage });
         }
       );
@@ -190,7 +190,7 @@ function Contact() {
               <p className={`text-lg mb-8 ${
                 theme === 'dark' ? 'text-[#aed9e0]' : 'text-[#5e6472]'
               } opacity-90`}>
-                Vous avez un projet en tete ou envie de discuter ? N'hesitez pas a me contacter !
+                Vous avez un projet en tête ou envie de discuter ? N'hésitez pas à me contacter !
               </p>
             </div>
 
@@ -217,7 +217,7 @@ function Contact() {
                   <div>
                     <p className={`text-sm opacity-75 ${
                       theme === 'dark' ? 'text-[#aed9e0]' : 'text-[#5e6472]'
-                    }`}>Telephone</p>
+                    }`}>Téléphone</p>
                     <p className={`text-lg font-semibold ${
                       theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
                     }`}>+91 9726201738</p>
@@ -278,7 +278,7 @@ function Contact() {
                       ? 'bg-[#b8f2e6]/10 hover:bg-[#b8f2e6]/20 text-[#b8f2e6]'
                       : 'bg-[#aed9e0]/20 hover:bg-[#aed9e0]/40 text-[#5e6472]'
                   }`}
-                  aria-label="Lien vers les reseaux sociaux"
+                  aria-label="Lien vers les réseaux sociaux"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
