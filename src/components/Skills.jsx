@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ThemeContext } from '../App';
 import AcademicianBadge from '../assets/academician.webp';
 import EverythingConnectedBadge from '../assets/everything-is-connected.webp';
@@ -7,10 +7,47 @@ import TraditionalWayBadge from '../assets/do-things-the-traditional-way.webp';
 
 function Skills() {
     const {theme} = useContext(ThemeContext);
+    const [hoverTooltip, setHoverTooltip] = useState(null);
+
+    const showTooltip = (event, text) => {
+        if (!text) return;
+        setHoverTooltip({
+            text,
+            x: event.clientX + 14,
+            y: event.clientY + 14
+        });
+    };
+
+    const moveTooltip = (event, text) => {
+        if (!text) return;
+        setHoverTooltip((prev) =>
+            prev
+                ? { ...prev, x: event.clientX + 14, y: event.clientY + 14 }
+                : { text, x: event.clientX + 14, y: event.clientY + 14 }
+        );
+    };
+
+    const hideTooltip = () => setHoverTooltip(null);
+
     const htbBadges = [
-        { image: AcademicianBadge, label: 'Académicien', alt: 'Badge Hack The Box Academician' },
-        { image: EverythingConnectedBadge, label: 'Tout est connecté', alt: 'Badge Hack The Box Everything Is Connected' },
-        { image: TraditionalWayBadge, label: 'Faites les choses de manière traditionnelle', alt: 'Badge Hack The Box Do Things The Traditional Way' },
+        {
+            image: AcademicianBadge,
+            label: 'Académicien',
+            alt: 'Badge Hack The Box Academician',
+            tooltip: 'Introduction à Hack The Box'
+        },
+        {
+            image: EverythingConnectedBadge,
+            label: 'Tout est connecté',
+            alt: 'Badge Hack The Box Everything Is Connected',
+            tooltip: 'Introduction au Réseautage'
+        },
+        {
+            image: TraditionalWayBadge,
+            label: 'Faites les choses de manière traditionnelle',
+            alt: 'Badge Hack The Box Do Things The Traditional Way',
+            tooltip: 'Introduction au Scripting Bash'
+        },
     ];
 
     const skillSections = [
@@ -222,9 +259,14 @@ function Skills() {
                                             : "border-[#5e6472]/25 bg-white/60"
                                     }`}
                                 >
-                                    <div className={`h-36 rounded-xl flex items-center justify-center overflow-hidden ${
-                                        theme === "dark" ? "bg-[#0f0f0f]/40" : "bg-[#f3f7f8]"
-                                    }`}>
+                                    <div
+                                        onMouseEnter={(event) => showTooltip(event, badge.tooltip)}
+                                        onMouseMove={(event) => moveTooltip(event, badge.tooltip)}
+                                        onMouseLeave={hideTooltip}
+                                        className={`h-36 rounded-xl flex items-center justify-center overflow-hidden ${
+                                            theme === "dark" ? "bg-[#0f0f0f]/40" : "bg-[#f3f7f8]"
+                                        }`}
+                                    >
                                         <img
                                             src={badge.image}
                                             alt={badge.alt}
@@ -243,6 +285,26 @@ function Skills() {
                     </motion.div>
                 </motion.div>
             </div>
+
+            {hoverTooltip && (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    className={`fixed z-[120] pointer-events-none px-3 py-2 rounded-lg text-xs md:text-sm font-medium shadow-xl ${
+                        theme === "dark"
+                            ? "bg-[#0f0f0f]/95 border border-[#b8f2e6]/40 text-[#b8f2e6]"
+                            : "bg-white/95 border border-[#5e6472]/25 text-[#5e6472]"
+                    }`}
+                    style={{
+                        left: hoverTooltip.x,
+                        top: hoverTooltip.y
+                    }}
+                >
+                    {hoverTooltip.text}
+                </motion.div>
+            )}
         </section>
     );
 }
