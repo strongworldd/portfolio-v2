@@ -108,7 +108,7 @@ function Projects() {
                             theme === "dark" ? "text-[#aed9e0]" : "text-[#5e6472]"
                         } opacity-90`}
                     >
-                        Voici quelques projets récents qui illustrent mes compétences et ma passion pour le développement web.
+                        Voici quelques projets qui illustrent mes compétences et ma passion pour la cybersécurité.
                     </motion.p>
                 </motion.div>
 

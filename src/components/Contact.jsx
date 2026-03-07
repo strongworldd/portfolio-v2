@@ -220,7 +220,7 @@ function Contact() {
                     }`}>Téléphone</p>
                     <p className={`text-lg font-semibold ${
                       theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
-                    }`}>+91 9726201738</p>
+                    }`}>+33 7 77 67 91 52</p>
                   </div>
                 </div>
               </motion.div>
@@ -249,7 +249,7 @@ function Contact() {
                     }`}>Email</p>
                     <p className={`text-lg font-semibold break-all ${
                       theme === 'dark' ? 'text-[#b8f2e6]' : 'text-[#5e6472]'
-                    }`}>pillaiaditya2310@gmail.com</p>
+                    }`}>kevin.michot.pro@gmail.com</p>
                   </div>
                 </div>
               </motion.div>
@@ -268,21 +268,43 @@ function Contact() {
               } opacity-75`}>
                 Retrouvez-moi
               </p>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap gap-4">
                 <motion.a
-                  href="#"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  href="https://www.linkedin.com/in/kévin-michot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`p-3 rounded-xl transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl transition-all ${
                     theme === 'dark'
                       ? 'bg-[#b8f2e6]/10 hover:bg-[#b8f2e6]/20 text-[#b8f2e6]'
                       : 'bg-[#aed9e0]/20 hover:bg-[#aed9e0]/40 text-[#5e6472]'
                   }`}
-                  aria-label="Lien vers les réseaux sociaux"
+                  aria-label="Lien vers LinkedIn"
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 10.74H5.67V18h2.67v-7.26zM7 9.62a1.55 1.55 0 100-3.1 1.55 1.55 0 000 3.1zM18.33 18v-3.97c0-2.13-1.14-3.12-2.66-3.12-1.22 0-1.77.67-2.08 1.14v-.98h-2.66c.04.65 0 6.93 0 6.93h2.66v-3.87c0-.21.02-.41.08-.56.17-.41.56-.84 1.21-.84.85 0 1.2.65 1.2 1.6V18h2.25z" />
                   </svg>
+                  <span className="font-medium">LinkedIn</span>
+                </motion.a>
+
+                <motion.a
+                  href="https://github.com/strongworldd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl transition-all ${
+                    theme === 'dark'
+                      ? 'bg-[#b8f2e6]/10 hover:bg-[#b8f2e6]/20 text-[#b8f2e6]'
+                      : 'bg-[#aed9e0]/20 hover:bg-[#aed9e0]/40 text-[#5e6472]'
+                  }`}
+                  aria-label="Lien vers GitHub"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-1.97c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.35.97.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.78.12 3.07.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.41.35.78 1.04.78 2.1v3.12c0 .31.21.68.8.56A11.53 11.53 0 0023.5 12C23.5 5.66 18.34.5 12 .5z" />
+                  </svg>
+                  <span className="font-medium">GitHub</span>
                 </motion.a>
               </div>
             </motion.div>
